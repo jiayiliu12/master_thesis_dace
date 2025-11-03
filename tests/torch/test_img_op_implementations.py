@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import pytest
 
 pytest.importorskip("torch", reason="PyTorch not installed. Please install with: pip install dace[ml]")
@@ -87,3 +88,8 @@ def test_global_avg_pool(sdfg_name: str):
     pt_output = pt_model(inputs)
 
     torch_tensors_close("output", pt_output, dace_output)
+
+
+if __name__ == "__main__":
+    test_bn(sdfg_name="test_bn")
+    test_global_avg_pool(sdfg_name="test_global_avg_pool")

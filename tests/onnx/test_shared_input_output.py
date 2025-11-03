@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 """
 Batch Norm is the only op that has a shared name between inputs and outputs. Test that prepending "in_" and "out_" works
 """
@@ -105,4 +106,6 @@ def test_bn_in_import():
 
 
 if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
+    for training_mode in [True, False]:
+        test_bn_standalone(training_mode=training_mode)
+    test_bn_in_import()

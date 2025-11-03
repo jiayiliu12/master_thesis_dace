@@ -1,19 +1,4 @@
-"""
-Automatic Differentiation Utility Functions for DaCe.
-
-This module provides utility functions for the DaCe automatic differentiation system.
-It contains helper functions for:
-- Data descriptor management and creation
-- Symbolic computation and expression manipulation
-- SDFG analysis and graph traversal utilities
-- Loop region analysis and code generation
-- Error handling and validation
-- Forward/backward pass data forwarding
-
-These utilities support the BackwardPassGenerator and various backward implementations
-by providing common functionality for gradient computation and graph manipulation.
-"""
-
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import ast
 import collections
 import copy
@@ -615,7 +600,7 @@ def get_loop_end(start: str, end: str, loop: LoopRegion) -> str:
         Get the smallest and largest index of a loop given the start and end values.
         This is an attempt at estimating the number of iterations of the loop.
         """
-    # TODO: This function only accepts for loops that starts or end at zero
+    # TODO: This function only accepts for-loops that starts or end at zero
     if is_int(start) and is_int(end):
         int_start, int_end = int(start), int(end)
         if int_start < int_end:
@@ -905,7 +890,8 @@ class SympyCleaner(ast.NodeTransformer):
 
     def visit_Name(self, node):
         if node.id == "pi":
-            return ast.copy_location(ast.parse("(3.141592653589)").body[0], node)
+            # Wrap in double() cast to avoid C++ ambiguity when typeless_pi needs explicit type
+            return ast.copy_location(ast.parse("double(dace.math.pi)").body[0].value, node)
         else:
             return self.generic_visit(node)
 

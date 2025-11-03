@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 """
 DaCe Library Node Backward Pass Implementations for Automatic Differentiation.
 
@@ -87,7 +88,6 @@ class ReverseReduce(BackwardImplementation):
 
             sdfg = SDFG("_reverse_" + str(reduction_type).replace(".", "_") + "_")
             # Create a name with a random number to avoid name clashes
-            # TODO: This is not an issue in the backward pass
             # but sometimes simplify will inline these SDFGs and create states with the same label
             state_label = f"block_{id(forward_node)}"
             state = sdfg.add_state(state_label)
@@ -137,7 +137,6 @@ class ReverseReduce(BackwardImplementation):
             # In this case, we need to get the index of the minimum value
             sdfg = SDFG("_reverse_" + str(reduction_type).replace(".", "_") + "_")
             # Create a name with a random number to avoid name clashes
-            # TODO: This is not an issue in the backward pass
             # but sometimes simplify will inline these SDFGs and create states with the same label
             state_label = f"block_{id(forward_node)}"
             state = sdfg.add_state(state_label)
@@ -266,7 +265,6 @@ class ReverseReduce(BackwardImplementation):
             # In this case, we need to get the index of the minimum value
             sdfg = SDFG("_reverse_" + str(reduction_type).replace(".", "_") + "_")
             # Create a name with a random number to avoid name clashes
-            # TODO: This is not an issue in the backward pass
             # but sometimes simplify will inline these SDFGs and create states with the same label
             state_label = f"block_{id(forward_node)}"
             state = sdfg.add_state(state_label)

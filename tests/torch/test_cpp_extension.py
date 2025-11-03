@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import pytest
 
 pytest.importorskip("torch", reason="PyTorch not installed. Please install with: pip install dace[ml]")
@@ -112,3 +113,8 @@ def test_module_with_constant(sdfg_name: str):
     output = Module()(inp)
 
     torch_tensors_close("output", inp + 1, output.cpu())
+
+
+if __name__ == "__main__":
+    test_extension()
+    test_module_with_constant(sdfg_name="test_module_with_constant")

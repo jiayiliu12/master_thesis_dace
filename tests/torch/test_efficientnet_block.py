@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import pytest
 
 pytest.importorskip("torch", reason="PyTorch not installed. Please install with: pip install dace[ml]")
@@ -105,4 +106,7 @@ def test_fast_mb(use_cpp_dispatcher: bool):
 
 
 if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
+    test_mbconv(use_cpp_dispatcher=True)
+    test_mbconv(use_cpp_dispatcher=False)
+    test_fast_mb(use_cpp_dispatcher=True)
+    test_fast_mb(use_cpp_dispatcher=False)

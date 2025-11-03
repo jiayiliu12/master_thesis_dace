@@ -1,6 +1,4 @@
-"""
-Criterion implementations
-"""
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 
 from typing import Union
 
@@ -39,7 +37,8 @@ class PureSoftmaxCrossEntropyLoss(ONNXForward):
         if node.ignore_index is not None and node.ignore_index >= 0:
             return False
 
-        # FIXME: support this
+        # The weights and log_prob arguments are optional
+        # We don't support them in this implementation
         if 'weights' in node.in_connectors:
             return False
         if 'log_prob' in node.out_connectors:

@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import pytest
 
 pytest.importorskip("torch", reason="PyTorch not installed. Please install with: pip install dace[ml]")
@@ -35,3 +36,8 @@ def test_multiple_outputs(sdfg_name: str, use_cpp_dispatcher: bool):
 
     torch_tensors_close("output_0", torch_outputs[0], dace_outputs[0])
     torch_tensors_close("output_1", torch_outputs[1], dace_outputs[1])
+
+
+if __name__ == "__main__":
+    test_multiple_outputs(sdfg_name="test_multiple_outputs_cpp_True", use_cpp_dispatcher=True)
+    test_multiple_outputs(sdfg_name="test_multiple_outputs_cpp_False", use_cpp_dispatcher=False)

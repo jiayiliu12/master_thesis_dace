@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import pytest
 
 pytest.importorskip("onnx", reason="ONNX not installed. Please install with: pip install dace[ml]")
@@ -30,3 +31,7 @@ def test_shadowing(sdfg_name: str):
     state.add_edge(op_node, "reshaped", access_result, None, sdfg.make_array_memlet("__return"))
 
     sdfg.compile()
+
+
+if __name__ == "__main__":
+    test_shadowing(sdfg_name="test_shadowing")

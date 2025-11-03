@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import os
 import copy
 import pytest
@@ -113,3 +114,8 @@ def test_bert(sdfg_name):
     labels = torch.tensor([0, 123], dtype=torch.long)
 
     training_step(BertTokenSoftmaxClf(), BertTokenSoftmaxClf(), (input, labels), sdfg_name)
+
+
+if __name__ == "__main__":
+    test_mnist(sdfg_name="test_mnist")
+    # test_bert is skipped

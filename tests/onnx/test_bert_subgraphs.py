@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 """
 Regression tests for BERT subgraphs
 """
@@ -44,4 +45,6 @@ def test_save_transients(sdfg_name: str):
 
 
 if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
+    test_slice(sdfg_name="test_slice")
+    test_reshape(sdfg_name="test_reshape")
+    test_save_transients(sdfg_name="test_save_transients")

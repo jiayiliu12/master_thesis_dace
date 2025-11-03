@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import pytest
 
 pytest.importorskip("onnx", reason="ONNX not installed. Please install with: pip install dace[ml]")
@@ -49,3 +50,8 @@ def test_lenet(sdfg_name: str, use_cpp_dispatcher: bool):
     dace_net.sdfg.expand_library_nodes()
 
     torch_tensors_close("output", torch_output, dace_output)
+
+
+if __name__ == "__main__":
+    test_lenet(sdfg_name="test_lenet_cpp_True", use_cpp_dispatcher=True)
+    test_lenet(sdfg_name="test_lenet_cpp_False", use_cpp_dispatcher=False)

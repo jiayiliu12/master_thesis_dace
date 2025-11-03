@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 """
 Test a full model including indexing and input preparation. The model also includes lots of symbolic dimensions.
 """
@@ -82,3 +83,7 @@ def test_bert_full(sdfg_name):
 
     torch_tensors_close("output_0", output[0], dace_output[0])
     torch_tensors_close("output_1", output[1], dace_output[1])
+
+
+if __name__ == "__main__":
+    test_bert_full(sdfg_name="test_bert_full")

@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import ctypes
 
 import pytest
@@ -19,3 +20,7 @@ def test_desc_to_dlpack():
     np.testing.assert_allclose(tensor, mydata), "Initial DLPack tensor conversion failed"
     mydata += 1
     np.testing.assert_allclose(tensor, mydata), "DLPack tensor does not share memory with numpy array"
+
+
+if __name__ == "__main__":
+    test_desc_to_dlpack()

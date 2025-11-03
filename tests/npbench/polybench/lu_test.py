@@ -144,7 +144,7 @@ def run_lu(device_type: dace.dtypes.DeviceType):
 
 def run_lu_autodiff():
     # Initialize data (polybench mini size)
-    N = 10
+    N = 5
     A = init_data(N)
     A_jax = jnp.copy(A)
 
@@ -198,6 +198,7 @@ if __name__ == "__main__":
 
     if target == "cpu":
         run_lu(dace.dtypes.DeviceType.CPU)
+        run_lu_autodiff()
     elif target == "gpu":
         run_lu(dace.dtypes.DeviceType.GPU)
     elif target == "fpga":

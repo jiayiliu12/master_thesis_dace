@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 """
 Test the python frontend of onnx nodes
 """
@@ -24,3 +25,7 @@ def test_matmul():
     B = np.random.normal(size=(5, 3)).astype(np.float32)
     result = matmul(inp1=A.copy(), inp2=B.copy())
     np.testing.assert_allclose(A @ B, result, atol=1e-5, rtol=1e-5, err_msg="MatMul output mismatch")
+
+
+if __name__ == "__main__":
+    test_matmul()

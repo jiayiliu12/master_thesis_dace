@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import pytest
 
 pytest.importorskip("torch", reason="PyTorch not installed. Please install with: pip install dace[ml]")
@@ -29,3 +30,7 @@ def test_debug_transients():
     torch_tensors_close("output", (x + 3) * 5, output)
     torch_tensors_close("y2", (x + 3) * 5, y2)
     torch_tensors_close("y", x + 3, y)
+
+
+if __name__ == "__main__":
+    test_debug_transients()

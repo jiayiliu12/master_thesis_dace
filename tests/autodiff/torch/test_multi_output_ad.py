@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import pytest
 
 pytest.importorskip("torch", reason="PyTorch not installed. Please install with: pip install dace[ml]")
@@ -58,5 +59,5 @@ def test_multi_output(sdfg_name: str, use_cpp_dispatcher: bool):
 
 
 if __name__ == "__main__":
-    import pytest
-    pytest.main([__file__, "-v"])
+    test_multi_output(sdfg_name="test_multi_output_cpp_True", use_cpp_dispatcher=True)
+    test_multi_output(sdfg_name="test_multi_output_cpp_False", use_cpp_dispatcher=False)

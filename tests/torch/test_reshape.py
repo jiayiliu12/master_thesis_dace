@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import pytest
 
 pytest.importorskip("torch", reason="PyTorch not installed. Please install with: pip install dace[ml]")
@@ -32,3 +33,7 @@ def test_reshape_module(sdfg_name: str):
     dace_output = dace_model(x)
 
     torch_tensors_close("output", torch_output, dace_output)
+
+
+if __name__ == "__main__":
+    test_reshape_module(sdfg_name="test_reshape_module")

@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import pytest
 
 pytest.importorskip("torch", reason="PyTorch not installed. Please install with: pip install dace[ml]")
@@ -55,3 +56,8 @@ def test_parse_forward_nested():
 
     result = train_step(x)
     tensors_close('parsed', expected.sum(), result)
+
+
+if __name__ == "__main__":
+    test_parse_forward_simple()
+    test_parse_forward_nested()

@@ -1,3 +1,4 @@
+# Copyright 2019-2025 ETH Zurich and the DaCe authors. All rights reserved.
 import pytest
 
 pytest.importorskip("onnx", reason="ONNX not installed. Please install with: pip install dace[ml]")
@@ -35,3 +36,7 @@ def test_sqrt_expansion(sdfg_name):
     result = sdfg(inp=X)
 
     assert np.allclose(np.sqrt(X), result)
+
+
+if __name__ == "__main__":
+    test_sqrt_expansion(sdfg_name="test_sqrt_expansion")
