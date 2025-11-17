@@ -11,7 +11,7 @@ from torch import nn, optim
 from transformers import BertConfig
 from transformers.models.bert.modeling_bert import BertLayer
 
-from dace.frontend.python.module import DaceModule
+from dace.ml import DaceModule
 from tests.utils import torch_tensors_close
 
 
@@ -90,6 +90,7 @@ def test_mnist(sdfg_name: str):
 
     training_step(dace_model, model, (images, labels), sdfg_name)
 
+@pytest.mark.xdist_group("large_ML_models")
 @pytest.mark.torch
 @pytest.mark.autodiff
 @pytest.mark.skip(reason="Requires pure implementation of expand")

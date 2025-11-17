@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 from transformers import LlamaForCausalLM, LlamaConfig
-from dace.frontend.python.module import DaceModule
+from dace.ml import DaceModule
 from tests.utils import torch_tensors_close
 
 
@@ -59,6 +59,7 @@ class LlamaWrapper(nn.Module):
         return logits
 
 
+@pytest.mark.xdist_group("large_ML_models")
 @pytest.mark.torch
 @pytest.mark.long
 def test_llama_model(sdfg_name: str):
